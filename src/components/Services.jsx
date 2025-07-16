@@ -25,20 +25,6 @@ const serviceData = [
   },
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20},
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 150,
-      damping: 10,
-      ease: "easeInOut"
-    }
-  }
-}
-
 const containerVariants = {
   hidden: { opacity: 1 },
   visible: {
@@ -97,8 +83,16 @@ function Services() {
       >
         {serviceData.map((service)=> (
           <motion.div 
-            variants={cardVariants}
-            className="text-center p-4 space-y-6">
+            className="text-center p-4 space-y-6"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.6
+            }}
+          >
             <img 
               src={service.image} 
               alt="" 
